@@ -1,11 +1,11 @@
 from pathlib import Path
+
 import environ
 
 env = environ.Env()
 environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 SECRET_KEY = env("SECRET_KEY")
 
@@ -96,6 +96,7 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
