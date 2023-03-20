@@ -16,25 +16,16 @@
         <h2 class="is-size-2 has-text-centered">Latest dishes</h2>
       </div>
 
-      <div class="column is-3" v-for="dish in latestDishes" v-bind:key="dish.id">
-        <div class="box">
-          <figure class="image">
-            <img v-bind:src="dish.get_image">
-          </figure>
+      <DishBox v-for="dish in latestDishes" v-bind:key="dish.id" v-bind:dish="dish"></DishBox>
 
-          <h3 class="is-size-4"> {{ dish.name }} </h3>
-          <p class="is-size-6 has-text-grey">${{ dish.price }}</p>
-
-          View details
-        </div>
-      </div>
     </div>
-
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import DishBox from "@/components/DishBox.vue";
+
 
 export default {
   name: 'HomeView',
@@ -45,10 +36,13 @@ export default {
     }
   },
   components: {
+    DishBox
   },
+
   mounted() {
     this.getLatestDishes()
   },
+  
   methods: {
     getLatestDishes() {
       axios

@@ -18,7 +18,7 @@
       <div class="navbar-menu" id="navbar-menu" v-bind:class="{ 'is-active': showMobileMenu }">
         <div class="navbar-start">
 
-          <router-link to="/shawarma" class="navbar-item">Shawarma</router-link>
+          <router-link to="/dishes" class="navbar-item">Shawarma</router-link>
           <router-link to="/drinks" class="navbar-item">Drinks</router-link>
         </div>
 
