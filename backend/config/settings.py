@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     'product',
+    'order',
 ]
 
 CORS_ALLOWED_ORIGINS = [
