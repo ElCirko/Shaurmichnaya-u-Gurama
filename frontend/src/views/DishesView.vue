@@ -17,7 +17,7 @@ import axios from "axios";
 import DishBox from "@/components/DishBox.vue";
 
 export default {
-    name: 'DisheshView',
+    name: 'DishesView',
     components: {
         DishBox
     },

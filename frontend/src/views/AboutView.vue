@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="about has-text-centered">
+    <h1 class="title">hotelos by napisat o nas, no vse sdelal ya sam.</h1>
   </div>
 </template>

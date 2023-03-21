@@ -19,7 +19,7 @@
         <div class="navbar-start">
 
           <router-link to="/dishes" class="navbar-item">Shawarma</router-link>
-          <router-link to="/drinks" class="navbar-item">Drinks</router-link>
+          <router-link to="/about" class="navbar-item">About</router-link>
         </div>
 
         <div class="navbar-end">
