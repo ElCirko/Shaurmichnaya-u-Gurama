@@ -5,10 +5,10 @@ from .models import Dish, Ingredient
 
 @admin.register(Ingredient)
 class IngredientAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
+    list_display = ("id", "name")
 
 
 @admin.register(Dish)
 class DishAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'date_added')
+    list_display = ("id", "name", "date_added")
     prepopulated_fields = {"slug": ("name",)}
