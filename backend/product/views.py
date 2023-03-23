@@ -1,10 +1,9 @@
 from django.http import Http404
-from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Dish
+from .models import Dish, Ingredient
 from .serializers import DishSerializer, IngredientSerializer
 
 
@@ -52,6 +51,13 @@ class DishList(APIView):
         serializer = DishSerializer(dishes, many=True)
         return Response(serializer.data)
 
+    def post(self, request, format=None):
+        serializer = DishSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class DishIngredients(APIView):
     def get_object(self, id):
@@ -64,3 +70,17 @@ class DishIngredients(APIView):
         ingredients = self.get_object(id).ingredients
         serializer = IngredientSerializer(ingredients, many=True)
         return Response(serializer.data)
+
+
+class IngredientList(APIView):
+    def get(self, request, format=None):
+        dishes = Ingredient.objects.all()
+        serializer = IngredientSerializer(dishes, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = IngredientSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
