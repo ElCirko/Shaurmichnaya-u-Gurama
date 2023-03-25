@@ -29,6 +29,8 @@ export default {
     },
     mounted() {
         this.getDishes()
+        document.title = "Shawarma list | Gurama"
+
     },
 
     methods: {

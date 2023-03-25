@@ -32,6 +32,7 @@
 
 <script>
 import axios from 'axios';
+import { toast } from 'bulma-toast';
 
 export default {
     name: 'DishView',
@@ -52,12 +53,33 @@ export default {
                 .get(`/api/dish/${slug}`)
                 .then(response => {
                     this.dish = response.data
-                    document.title = this.dish.name
+                    document.title = this.dish.name + " | U Gurama"
                 })
                 .catch(error => {
                     console.log(error)
                 })
-            // this.$store.commit('setIsLoading', false)
+        },
+
+        addToCart() {
+            if (isNaN(this.quantity) || this.quantity < 1) {
+                this.quantity = 1
+            }
+
+            const item = {
+                dish: this.dish,
+                quantity: this.quantity
+            }
+
+            this.$store.commit('addToCart', item)
+
+            toast({
+                message: 'The dish was added to the cart',
+                type: 'is-success',
+                dismissible: true,
+                pauseOnHover: true,
+                duration: 2000,
+                position: 'bottom-right',
+            })
         }
     }
 }
